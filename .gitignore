@@ -1,4 +1,5 @@
 .vscode
 .idea
 ./e-store/node_modules
-./first_practice
+/first_practice
+/2_repeat_js
