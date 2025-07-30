@@ -7,7 +7,7 @@ export default function Catalog() {
         <main className="catalog">
             <ul className="products">
                 {products.map((product) => (
-                    <Product key={product.name} product={product}/>
+                    <Product props={product} key={product.name} />
                 ))}
             </ul>
         </main>
