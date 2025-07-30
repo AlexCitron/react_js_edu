@@ -1,7 +1,6 @@
 import Product from "./product.jsx";
-import {productData}  from "../../misc/gadgets.jsx";
 
-export default function Catalog() {
+export default function Catalog({productData}) {
     const products = [...productData]
     return (
         <main className="catalog">
