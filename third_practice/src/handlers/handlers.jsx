@@ -3,7 +3,7 @@ function handleStartButtonClick(setActive) {
 }
 
 function handleTabButtonClick(setActiveTabButton, name, activeTabButton) {
-    (activeTabButton === name) ? setActiveTabButton(null) : setActiveTabButton(name);
+    (activeTabButton === name) || setActiveTabButton(name);
 }
 
 function handlePreviousButtonClick(tabArrayNames, activeTabButton, setActiveTabButton) {
