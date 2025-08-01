@@ -9,8 +9,10 @@ body {
 }
 
 .app {
+  height: 600px;
   width: 600px;
   text-align: center;
+  justify-content: center;
 }
 
 h1 {

@@ -40,3 +40,5 @@ const cardData = [
         archived: false,
     },
 ]
+
+export default cardData
