@@ -2,4 +2,8 @@ function handleStartButtonClick(setActive) {
     setActive((previousState) => !previousState);
 }
 
-export default handleStartButtonClick
+function handleTabButtonClick(setActiveTabButton, name, activeTabButton) {
+    (activeTabButton === name) ? setActiveTabButton(null) : setActiveTabButton(name);
+}
+
+export {handleStartButtonClick, handleTabButtonClick}

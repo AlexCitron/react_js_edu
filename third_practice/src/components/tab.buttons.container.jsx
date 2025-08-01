@@ -1,12 +1,7 @@
 import Button from "./button.jsx";
+import {handleTabButtonClick} from "../handlers/handlers.jsx";
 
-export default function TabButtonsContainer({ cardData }) {
-    const cardsSowedAtTab = 2
-    const tabArrayNames = []
-
-    for(let i = 1; i < (cardData.length / cardsSowedAtTab) + 1; i++){
-        tabArrayNames.push(`Tab ${i}`)
-    }
+export default function TabButtonsContainer({ tabArrayNames, activeTabButton, setActiveTabButton }) {
 
     return (
         <div className='tab-buttons'>
@@ -14,8 +9,8 @@ export default function TabButtonsContainer({ cardData }) {
                 (<Button
                     key={index}
                     name={name}
-                    className='tab-button'
-                    onClick={() => console.log(`${name} clicked`)}
+                    className={(activeTabButton === name) ? 'tab-button active' : 'tab-button'}
+                    onClick={() =>handleTabButtonClick(setActiveTabButton, name, activeTabButton)}
                 />)
             )}
         </div>
