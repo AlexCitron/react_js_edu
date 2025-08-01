@@ -5,6 +5,8 @@ import TabButtonsContainer from "./components/tab.buttons.container.jsx";
 import { handleStartButtonClick } from "./handlers/handlers.jsx";
 
 import Button from "./components/button.jsx";
+import NavigationContainer from "./components/navigation.container.jsx";
+import Footer from "./components/footer.jsx";
 
 export default function App() {
 
@@ -39,7 +41,8 @@ export default function App() {
                     setActiveTabButton={setActiveTabButton}
                 />
                 <CardContainer cardData={cardData.slice(start, start + cardsSowedAtTab)} />
-
+                <NavigationContainer />
+                <Footer />
             </>
         }
 
