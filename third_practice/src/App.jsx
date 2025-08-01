@@ -41,7 +41,11 @@ export default function App() {
                     setActiveTabButton={setActiveTabButton}
                 />
                 <CardContainer cardData={cardData.slice(start, start + cardsSowedAtTab)} />
-                <NavigationContainer />
+                <NavigationContainer
+                    tabArrayNames={tabArrayNames}
+                    activeTabButton={activeTabButton}
+                    setActiveTabButton={setActiveTabButton}
+                />
                 <Footer />
             </>
         }
