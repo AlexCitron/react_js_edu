@@ -11,7 +11,7 @@ import Footer from "./components/footer.jsx";
 export default function App() {
 
     /* Useful variables section */
-    const cardsSowedAtTab = 2 // Int how many cards will be presented in section
+    const cardsSowedAtTab = 1 // Int how many cards will be presented in section
     const tabArrayNames = [] // Qtty of tab buttons depends on CardData file and qtty of cards shown
 
     /* Dynamic array of Tab button names */
@@ -24,8 +24,8 @@ export default function App() {
     const [activeTabButton, setActiveTabButton] = useState(tabArrayNames[0]); // State for
 
     /* start index for Cards Section*/
-    const start = (tabArrayNames.indexOf(activeTabButton) ? tabArrayNames.indexOf(activeTabButton) * 2 : 0)
-
+    const start = (tabArrayNames.indexOf(activeTabButton) ? tabArrayNames.indexOf(activeTabButton) * cardsSowedAtTab : 0)
+    console.log(start)
 
   return (
     <div className='app'>
