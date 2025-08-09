@@ -1,7 +1,7 @@
-export default function ButtonCloseOpenForm ({buttonName, onClick}) {
+export default function ButtonCloseOpenForm ({className, onClick}) {
     return (
         <button
-            className={buttonName ? 'close-button open' : 'close-button'}
+            className={className}
             onClick={onClick}
         >+</button>
     )

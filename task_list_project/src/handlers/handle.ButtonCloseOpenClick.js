@@ -1,9 +1,8 @@
-function handleButtonCloseOpenClick(buttonName, setButtonName, elem) {
-    if (buttonName === elem[0].className) {
-        setButtonName(null);
-    } else {
-        setButtonName(elem[0].className)
-    }
+function toggleSection(section, setOpenSection) {
+    setOpenSection((prev) => ({
+        ...prev,
+        [section]: !prev[section]
+    }));
 }
 
-export default handleButtonCloseOpenClick
+export default toggleSection
