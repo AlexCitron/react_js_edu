@@ -1,11 +1,11 @@
 import { useState } from "react";
 import AddTaskForm from "./add.tasks.form.jsx";
-import CurrentTaskForm from "./current.tasks.form.jsx";
-import CompletedTasksForm from "./completed.tasks.form.jsx";
 import ButtonCloseOpenForm from "./button.close.form.jsx";
-import toggleSection from "../handlers/handle.ButtonCloseOpenClick.js";
+import toggleSection from "../handlers/toggleSection.js";
+import TaskList from "./task.list.jsx";
 
-export default function FormsContainer({className}) {
+
+export default function FormsContainer({className, tasks, setTasks, completedTasks, setCompletedTasks}) {
 
     const [openSection, setOpenSection] = useState({
         addTasksForm: false,
@@ -21,7 +21,7 @@ export default function FormsContainer({className}) {
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.addTasksForm ? ' open' : ''}` }
                         onClick={() => toggleSection('addTasksForm', setOpenSection)} />
-                    {openSection.addTasksForm && <AddTaskForm />}
+                    {openSection.addTasksForm && <AddTaskForm tasks={tasks} setTasks={setTasks}/>}
                 </div>
             )
         case "task-container":
@@ -31,7 +31,11 @@ export default function FormsContainer({className}) {
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.tasksForm ? ' open' : ''}` }
                         onClick={() => toggleSection('tasksForm', setOpenSection)}/>
-                    {openSection.tasksForm && <CurrentTaskForm />}
+                    <div className="sort-controls">
+                        <button className="sort-button">By date</button>
+                        <button className="sort-button">By Priority</button>
+                    </div>
+                    {openSection.tasksForm && <TaskList tasks={tasks} setTasks={setTasks}/>}
                 </div>
             )
         case "completed-task-container":
@@ -41,7 +45,7 @@ export default function FormsContainer({className}) {
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.completedTasksForm ? ' open' : ''}` }
                         onClick={() => toggleSection('completedTasksForm', setOpenSection)} />
-                    {openSection.completedTasksForm && <CompletedTasksForm /> }
+                    {openSection.completedTasksForm && <TaskList completedTasks={completedTasks} setCompletedTasks={setCompletedTasks}/> }
                 </div>
             )
         default:

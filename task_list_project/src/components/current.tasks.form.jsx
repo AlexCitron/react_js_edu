@@ -1,13 +1,9 @@
 import TaskList from "./task.list.jsx";
 
-export default function CurrentTaskForm() {
+export default function CurrentTaskForm({tasks, setTasks}) {
     return (
         <>
-            <div className="sort-controls">
-                <button className="sort-button">By date</button>
-                <button className="sort-button">By Priority</button>
-            </div>
-            <TaskList />
+            <TaskList tasks={tasks} setTasks={setTasks}/>
         </>
     )
 }
