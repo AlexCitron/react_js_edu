@@ -1,4 +1,5 @@
 import {useState} from "react";
+import  handleSubmitForm from "../handlers/handleSubmitForm.js";
 
 export default function AddTaskForm({setTasks, tasks}) {
 
@@ -6,22 +7,8 @@ export default function AddTaskForm({setTasks, tasks}) {
     const [priority, setPriority] = useState('Low')
     const [dueDate, setDueDate] = useState('')
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        if(title.trim() && dueDate){
-            addTask({title, priority, dueDate})
-            setTitle("")
-            setPriority("Low")
-            setDueDate("")
-        }
-    }
-
-    function addTask(task) {
-        setTasks([...tasks, {...task, completed: false, id: Date.now()}])
-    }
-
     return (
-        <form action="" className='task-form' onSubmit={handleSubmit}>
+        <form action="" className='task-form' onSubmit={(e) => handleSubmitForm(e, setTitle, setPriority, setDueDate, setTasks, tasks)}>
             <input
                 onChange={(e) => setTitle(e.target.value) }
                 type='text'

@@ -1,8 +1,8 @@
-function toggleSection(section, setOpenSection) {
+function handleToggleSection(section, setOpenSection) {
     setOpenSection((prev) => ({
         ...prev,
         [section]: !prev[section]
     }));
 }
 
-export default toggleSection
+export default handleToggleSection

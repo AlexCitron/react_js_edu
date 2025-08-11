@@ -1,18 +1,10 @@
-import { useState } from "react";
 import AddTaskForm from "./add.tasks.form.jsx";
 import ButtonCloseOpenForm from "./button.close.form.jsx";
-import toggleSection from "../handlers/toggleSection.js";
+import handleToggleSection from "../handlers/handleToggleSection.js";
 import TaskList from "./task.list.jsx";
 
 
-export default function FormsContainer({className, tasks, setTasks, completedTasks, setCompletedTasks}) {
-
-    const [openSection, setOpenSection] = useState({
-        addTasksForm: false,
-        tasksForm: true,
-        completedTasksForm: true,
-    });
-
+export default function FormsContainer({className, tasks, setTasks, openSection, setOpenSection}) {
     switch (className) {
         case "task-add-container":
             return (
@@ -20,7 +12,7 @@ export default function FormsContainer({className, tasks, setTasks, completedTas
                     <h1>Add Task to list</h1>
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.addTasksForm ? ' open' : ''}` }
-                        onClick={() => toggleSection('addTasksForm', setOpenSection)} />
+                        onClick={() => handleToggleSection('addTasksForm', setOpenSection)} />
                     {openSection.addTasksForm && <AddTaskForm tasks={tasks} setTasks={setTasks}/>}
                 </div>
             )
@@ -30,12 +22,12 @@ export default function FormsContainer({className, tasks, setTasks, completedTas
                     <h2>Tasks</h2>
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.tasksForm ? ' open' : ''}` }
-                        onClick={() => toggleSection('tasksForm', setOpenSection)}/>
+                        onClick={() => handleToggleSection('tasksForm', setOpenSection)}/>
                     <div className="sort-controls">
-                        <button className="sort-button">By date</button>
-                        <button className="sort-button">By Priority</button>
+                        <button className="sort-button" >By date</button>
+                        <button className="sort-button" >By Priority</button>
                     </div>
-                    {openSection.tasksForm && <TaskList tasks={tasks} setTasks={setTasks}/>}
+                    {openSection.tasksForm && <TaskList tasks={tasks.filter((task) => task.completed === false)} setTasks={setTasks}/>}
                 </div>
             )
         case "completed-task-container":
@@ -44,8 +36,8 @@ export default function FormsContainer({className, tasks, setTasks, completedTas
                     <h2>Completed Tasks </h2>
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.completedTasksForm ? ' open' : ''}` }
-                        onClick={() => toggleSection('completedTasksForm', setOpenSection)} />
-                    {openSection.completedTasksForm && <TaskList completedTasks={completedTasks} setCompletedTasks={setCompletedTasks}/> }
+                        onClick={() => handleToggleSection('completedTasksForm', setOpenSection)} />
+                    {openSection.completedTasksForm && <TaskList tasks={tasks.filter((task) => task.completed === true)} setTasks={setTasks}/> }
                 </div>
             )
         default:
