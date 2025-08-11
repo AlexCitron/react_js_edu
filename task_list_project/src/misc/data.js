@@ -9,7 +9,7 @@ const initialTasks = [
     },
     {
         title: "Task 2",
-        priority: 'Medium',
+        priority: 'High',
         id: 2,
         dueDate: "2025-08-12T09:00",
         completed: false,
@@ -17,7 +17,7 @@ const initialTasks = [
     },
     {
         title: "Task 3",
-        priority: 'High',
+        priority: 'Medium',
         id: 3,
         dueDate: "2025-08-13T09:00",
         completed: false,
@@ -25,7 +25,7 @@ const initialTasks = [
     },
     {
         title: "Task 4",
-        priority: 'High',
+        priority: 'Low',
         id: 4,
         dueDate: "2025-08-13T09:00",
         completed: true,
