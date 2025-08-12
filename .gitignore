@@ -1,9 +1,9 @@
 .vscode
 .idea
-/e-store
-/first_practice
-/second_practice
+e-store
+first_practice
+second_practice
 status_edu
 third_practice
-forth_calc/
-task_list_project/node_modules
+forth_calc
+task_list_project
