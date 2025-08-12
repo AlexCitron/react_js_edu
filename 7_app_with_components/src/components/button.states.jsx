@@ -5,6 +5,7 @@ export default function ButtonStates() {
         <div className={'component-group'}>
             <h2>Sizes</h2>
             <div className={'component-card'}>
+                <Button className={'button default'} name={'DEFAULT'}/>
                 <Button className={'button disabled'} name={'DISABLED'}/>
                 <Button className={'button full-width'} name={'FULL-WIDTH'}/>
                 <Button className={'button large'} name={'LARGE'}/>

@@ -7,12 +7,12 @@ export default function App() {
 
   return (
     <>
-      <Header />
-        <div className={'component-showcase'}>
-            <Variants />
-            <Sizes />
-            <ButtonStates />
-        </div>
+        <Header />
+            <div className={'component-showcase'}>
+                <Variants />
+                <Sizes />
+                <ButtonStates />
+            </div>
     </>
   )
 }
