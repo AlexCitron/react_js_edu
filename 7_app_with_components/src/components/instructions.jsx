@@ -1,5 +1,3 @@
-import Button from "./button.jsx";
-
 export default function Instructions({state}) {
     return (
         <div className={`app-instructions${state}`}>
