@@ -5,9 +5,9 @@ export default function Sizes() {
         <div className={'component-group'}>
             <h2>Sizes</h2>
             <div className={'component-card'}>
-                <Button className={'button small'} name={'SMALL'}/>
-                <Button className={'button medium'} name={'MEDIUM'}/>
-                <Button className={'button large'} name={'LARGE'}/>
+                <Button variant={'small'} text={'SMALL'}/>
+                <Button variant={'medium'} text={'MEDIUM'}/>
+                <Button variant={'large'} text={'LARGE'}/>
             </div>
         </div>
     )

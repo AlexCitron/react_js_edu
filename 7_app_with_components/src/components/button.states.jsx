@@ -5,8 +5,8 @@ export default function ButtonStates() {
         <div className={'component-group'}>
             <h2>Buttons states</h2>
             <div className={'component-card'}>
-                <Button className={'button default'} name={'DEFAULT'}/>
-                <Button className={'button disabled'} name={'DISABLED'}/>
+                <Button variant={'button default'} text={'DEFAULT'}/>
+                <Button variant={'button disabled'} text={'DISABLED'}/>
             </div>
         </div>
     )

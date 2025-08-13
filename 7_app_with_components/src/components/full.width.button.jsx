@@ -5,9 +5,9 @@ export default function FullWidthButton() {
         <div className={'component-group'}>
             <h2>Width Button</h2>
             <div className={'component-card'}>
-                <Button className={'button full-width'} name={'FULL-WIDTH'}/>
-                <Button className={'button large'} name={'LARGE'}/>
-                <Button className={'button-icon'} name={'ICON'}/>
+                <Button variant={'button full-width'} text={'FULL-WIDTH'}/>
+                <Button variant={'button large'} text={'LARGE'}/>
+                <Button variant={'button-icon'} text={'ICON'}/>
             </div>
         </div>
     )

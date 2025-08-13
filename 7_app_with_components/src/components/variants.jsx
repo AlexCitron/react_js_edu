@@ -5,11 +5,12 @@ export default function Variants() {
         <div className={'component-group'}>
             <h2>Variants</h2>
             <div className={'component-card'}>
-                <Button className={'button primary'} name={'PRIMARY'}/>
-                <Button className={'button secondary'} name={'SECONDARY'}/>
-                <Button className={'button danger'} name={'DANGER'}/>
-                <Button className={'button gradient'} name={'GRADIENT'}/>
-                <Button className={'button outline'} name={'OUTLINE'}/>
+                <Button variant={'primary'} text={'PRIMARY'}/>
+                <Button variant={'secondary'} text={'SECONDARY'}/>
+                <Button variant={'danger'} text={'DANGER'}/>
+                <Button variant={'gradient'} text={'GRADIENT'}/>
+                <Button variant={'outline'} text={'OUTLINE'}/>
+                <Button variant={'gradient'} text={'new'} size={'large'} onClick={() => {}}/>
             </div>
         </div>
     )

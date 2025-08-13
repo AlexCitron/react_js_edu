@@ -167,7 +167,6 @@ body {
 
 /* Стили кнопок */
 .button {
-  background-color: #50fa7b;
   display: inline-flex;
   align-items: center;
   justify-content: center;
