@@ -8,11 +8,18 @@ export default function App() {
     const [city, setCity] = useState("");
     const [weatherData, setWeatherData] = useState(null);
 
+    async function getWeatherData() {
+        const response = await fetch(
+            `http://api.weatherapi.com/v1/current.json?key=${KEY}&q=Taganrog`
+        );
+        const data = await response.json();
+        console.log(data);
+    }
 
-
-  return (
+    return (
     <div className={'app'}>
       <Main>
+          <button className={'button'} onClick={getWeatherData}></button>
           <h1 className={'app-title'}>Weather Widget</h1>
           <div className={'search-container'}>
               <input className={'search-input'} type='text' placeholder='Enter city name' />
@@ -32,5 +39,5 @@ export default function App() {
           </WeatherCard>
       </Main>
     </div>
-  )
+    )
 }
