@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export default function TimerComponent() {
-    const [count, setCount] = useState(15);
+    const [count, setCount] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {

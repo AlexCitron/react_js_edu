@@ -27,6 +27,9 @@ export default function App() {
     }, []);
 
     useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         if(!city.trim() && !coords) {
             setWeatherData(null);
             setError(null);
@@ -56,6 +59,9 @@ export default function App() {
             }
         }
         getWeatherData();
+        return () => {
+            controller.abort();
+        }
     }, [city, coords])
 
     function renderError(){
