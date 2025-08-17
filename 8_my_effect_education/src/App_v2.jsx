@@ -19,7 +19,7 @@ export default function App() {
         }
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
-           setCoords({latitude, longitude});
+            setCoords({latitude, longitude});
         }, (error) => {
             console.error("Geolocation error", error.message);
             setError("Failed to get geolocation");
@@ -85,18 +85,18 @@ export default function App() {
     }
 
     return (
-    <div className={'app'}>
-        <TimerComponent />
+        <div className={'app'}>
+            <TimerComponent />
 
-        <Main>
-            <h1 className={'app-title'}>Weather Widget</h1>
-            <div className={'search-container'}>
-              <input className={'search-input'} type='text' placeholder='Enter city name' onChange={(e) => setCity(e.target.value)} />
-            </div>
-              {error && renderError()}
-              {loading && renderLoading()}
-              {!error && !loading && weatherData && renderWeather()}
-        </Main>
-    </div>
+            <Main>
+                <h1 className={'app-title'}>Weather Widget</h1>
+                <div className={'search-container'}>
+                    <input className={'search-input'} type='text' placeholder='Enter city name' onChange={(e) => setCity(e.target.value)} />
+                </div>
+                {error && renderError()}
+                {loading && renderLoading()}
+                {!error && !loading && weatherData && renderWeather()}
+            </Main>
+        </div>
     )
 }
