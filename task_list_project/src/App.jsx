@@ -1,10 +1,11 @@
 import Footer from "./components/footer.jsx";
 import FormsContainer from "./components/forms.container.jsx";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { initialTasks } from "./misc/data.js";
 
 
 export default function App() {
+    const [time, setTime] = useState(new Date());
     const [tasks, setTasks] = useState([...initialTasks]);
     const [openSection, setOpenSection] = useState({
         addTasksForm: false,
@@ -17,10 +18,15 @@ export default function App() {
     const activeTasks = tasks.filter((task) => !task.completed);
     const completedTasks = tasks.filter((task) => task.completed);
 
+    useEffect(() => {
+        const timer = setInterval(() => {setTime(new Date())}, 1000);
+        return () => {clearInterval(timer)}
+    }, [time])
 
 
   return (
     <div className='app'>
+        <h1>Timer: {time.toLocaleTimeString()}</h1>
         <FormsContainer className='task-add-container' setTasks={setTasks} tasks={tasks} openSection={openSection} setOpenSection={setOpenSection} />
         <FormsContainer className='task-container'
                         tasks={activeTasks}
@@ -31,8 +37,10 @@ export default function App() {
                         setSortType ={setSortType}
                         sortOrder ={sortOrder}
                         setSortOrder ={setSortOrder}
+                        time={time}
+
         />
-        <FormsContainer className='completed-task-container' tasks={completedTasks} setTasks={setTasks} openSection={openSection} setOpenSection={setOpenSection}/>
+        <FormsContainer className='completed-task-container' tasks={completedTasks} setTasks={setTasks} openSection={openSection} setOpenSection={setOpenSection} time={time}/>
         <Footer />
     </div>
   )

@@ -6,12 +6,12 @@ import handleSortButtonClick from "../handlers/handleSortButtonsClick.js";
 
 
 export default function FormsContainer(props) {
-    const {tasks, className, setTasks, setOpenSection, openSection,  sortType, setSortType, sortOrder, setSortOrder }  = props
+    const {tasks, className, setTasks, setOpenSection, openSection,  sortType, setSortType, sortOrder, setSortOrder, time }  = props
 
     switch (className) {
         case "task-add-container":
             return (
-                <div className='task-add-container'>
+                <div className='task-container'>
                     <h1>Add Task to list</h1>
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.addTasksForm ? ' open' : ''}` }
@@ -30,7 +30,7 @@ export default function FormsContainer(props) {
                         <button className={`sort-button ${sortType === 'date' ? "active" : ""}`} onClick={() => handleSortButtonClick("date", sortType, sortOrder, setTasks, setSortType, setSortOrder, tasks)}>By date {sortType === 'date' && sortOrder === 'asc' ? "\u2191" : "\u2193"}</button>
                         <button className={`sort-button ${sortType === 'priority' ? "active" : ""}`} onClick={() => handleSortButtonClick('priority', sortType, sortOrder, setTasks, setSortType, setSortOrder, tasks)}>By Priority {sortType === 'priority' && sortOrder === 'asc' ? "\u2191" : "\u2193"}</button>
                     </div>
-                    {openSection.tasksForm && <TaskList tasks={tasks} setTasks={setTasks}/>}
+                    {openSection.tasksForm && <TaskList time={time} tasks={tasks} setTasks={setTasks}/>}
                 </div>
             )
         case "completed-task-container":
@@ -40,7 +40,7 @@ export default function FormsContainer(props) {
                     <ButtonCloseOpenForm
                         className={`close-button${openSection.completedTasksForm ? ' open' : ''}` }
                         onClick={() => handleToggleSection('completedTasksForm', setOpenSection)} />
-                    {openSection.completedTasksForm && <TaskList tasks={tasks} setTasks={setTasks}/> }
+                    {openSection.completedTasksForm && <TaskList time={time} tasks={tasks} setTasks={setTasks}/> }
                 </div>
             )
         default:
