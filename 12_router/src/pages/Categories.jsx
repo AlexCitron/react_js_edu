@@ -1,3 +1,9 @@
+import Header from "../components/Header.jsx";
+
 export default function Categories() {
-    return <div>Categories page</div>;
+    return (
+        <>
+            <p>Categories page</p>
+        </>
+    )
 }

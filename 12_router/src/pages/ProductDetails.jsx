@@ -1,3 +1,9 @@
+import Header from "../components/Header.jsx";
+
 export default function ProductDetails() {
-    return <div>Product details page</div>;
+    return (
+        <>
+            <p>Product page</p>
+        </>
+    )
 }

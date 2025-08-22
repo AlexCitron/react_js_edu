@@ -1,3 +1,9 @@
+import Header from "../components/Header.jsx";
+
 export default function About() {
-    return <div>About page</div>;
+    return (
+        <>
+            <p>About page</p>
+        </>
+    )
 }

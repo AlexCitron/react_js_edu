@@ -1,3 +1,9 @@
+import Header from "../components/Header.jsx";
+
 export default function NotFound() {
-    return <div>Not found page</div>;
+    return (
+        <>
+            <p>Not found page</p>
+        </>
+    )
 }
