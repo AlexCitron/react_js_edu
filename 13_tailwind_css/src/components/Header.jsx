@@ -1,24 +1,15 @@
 import {NavLink} from "react-router-dom";
 
-export default function Header({ children }) {
+export function Header({children}) {
 
     return (
-        <header className={'header'}>
-            <h1>Header</h1>
-            <div className={'container'}  style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <div>
-                    <NavLink to={'/'} >Home</NavLink>
-                    <NavLink to={'/about'} >About</NavLink>
-                    <NavLink to={'/cart'} >Cart</NavLink>
-                </div>
-                <div>
-                    <NavLink to={"/cart"}>
-                        <img src={null} alt="cart img"/>
-                        {children}
-                    </NavLink>
-                </div>
-            </div>
-            <hr/>
+        <header className={'flex py-8 px-8 justify-between header bg-blue-200'}>
+            <img className={"h-6"} src={"/logo.svg"} alt={'logo'}/>
+            <ul className={'flex gap-x-8'}>
+                <li><NavLink className={"font-semibold"} to={'/'}>Home</NavLink></li>
+                <li><NavLink className={"font-semibold"} to={'/about'}>About</NavLink></li>
+                <li><NavLink className={"font-semibold"} to={'/cart'}>Cart</NavLink></li>
+            </ul>
         </header>
-    )
+)
 }
