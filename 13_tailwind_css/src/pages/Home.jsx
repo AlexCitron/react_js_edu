@@ -12,9 +12,10 @@ export default function Home() {
             <ul className={'grid grid-cols-3 gap-4 px-5'}>
                 {categories.map(category => (
                     <li key={category.id} style={{ listStyle: "none" }}>
-                    <Link to={`/category/${category.id.toLowerCase()}`}>
-                        {category.name}
-                        <img src={category.img} alt={category.name} />
+                    <Link className={'relative flex flex-col items-center justify-center'} to={`/category/${category.id.toLowerCase()}`}>
+                        <span className={'z-10 absolute font-semibold text-slate-50 text-xl'}>{category.name}</span>
+                        <img className={'rounded-xl'} src={category.img} alt={category.name} />
+                        <div className={'absolute inset-0 bg-gray-950/40 rounded-xl'}></div>
                     </Link>
                     </li>))}
             </ul>
