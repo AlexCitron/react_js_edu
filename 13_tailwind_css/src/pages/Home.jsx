@@ -15,7 +15,7 @@ export default function Home() {
                     <Link className={'relative flex flex-col items-center justify-center'} to={`/category/${category.id.toLowerCase()}`}>
                         <span className={'z-10 absolute font-semibold text-slate-50 text-xl'}>{category.name}</span>
                         <img className={'rounded-xl'} src={category.img} alt={category.name} />
-                        <div className={'absolute inset-0 bg-gray-950/40 rounded-xl'}></div>
+                        <div className={'absolute inset-0 rounded-xl opacity-40 bg-gradient-to-t from-gray-900 via-gray-700 to-gray-300'}></div>
                     </Link>
                     </li>))}
             </ul>
