@@ -1,7 +1,1 @@
 @import "tailwindcss";
-
-@layer components {
-    .links {
-        @apply text-2xl font-semibold text-blue-600 hover:text-red-400;
-    }
-}
