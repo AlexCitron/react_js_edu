@@ -1,5 +1,5 @@
 import { products } from "../data/data.js";
-import {Link, useLocation, useParams, useSearchParams} from "react-router-dom";
+import {Link, useParams, useSearchParams} from "react-router-dom";
 
 
 export default function Category() {
