@@ -1,8 +1,8 @@
 export default function About() {
     return (
-        <div>
+        <div className="prose">
             {/* Заголовки */}
-            <h1>About Our E-commerce Platform</h1>
+            <h1 className="text-shadow-lg">About Our E-commerce Platform</h1>
             <h2>Our Vision</h2>
             <h3>How We Started</h3>
             <h4>Key Milestones</h4>

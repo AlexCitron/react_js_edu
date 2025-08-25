@@ -1,4 +1,5 @@
 import "./index.css"
+import "./plugins.css"
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
