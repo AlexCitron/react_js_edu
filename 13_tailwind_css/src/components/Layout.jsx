@@ -10,7 +10,7 @@ export default function Layout() {
             <Header>
                 <span> {cart.length}</span>
             </Header>
-            <main>
+            <main className="max-w-2xl m-auto">
                 <Outlet cart={cart} setCart={setCart} />
             </main>
             <Footer/>
