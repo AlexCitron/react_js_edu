@@ -6,12 +6,15 @@ import Posts from "./pages/Posts.jsx";
 import fetchDataHandler from "./handlers/fetchDataHandler.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
-const URL = 'https://jsonplaceholder.typicode.com/postss'
+const URL = 'https://jsonplaceholder.typicode.com/posts'
 
 
 const  router = createBrowserRouter([
     {path: "/", element: <Layout/>, children: [
-            {index: true, element: <Home/>},
+            {
+                index: true,
+                element: <Home/>
+            },
             {
                 path: "/posts",
                 element: <Posts/>,
