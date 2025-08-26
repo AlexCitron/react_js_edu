@@ -3,11 +3,19 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Posts from "./pages/Posts.jsx";
+import fetchDataHandler from "./handlers/fetchDataHandler.jsx";
+
+const URL = 'https://jsonplaceholder.typicode.com/posts'
+
 
 const  router = createBrowserRouter([
     {path: "/", element: <Layout/>, children: [
             {index: true, element: <Home/>},
-            {path: "/posts", element: <Posts/>},
+            {
+                path: "/posts",
+                element: <Posts/>,
+                loader: () => fetchDataHandler(URL),
+            },
         ]},
 ])
 
