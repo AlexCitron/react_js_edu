@@ -1,4 +1,10 @@
-export default function NestedComponent({count, increment, decrement, reset}) {
+import {useContext} from "react";
+import {MyContext} from "../App.jsx"
+
+export default function NestedComponent() {
+
+    const {count, increment, decrement, reset} = useContext(MyContext)
+
     return (
         <div className="border-2 border-green-500 m-3 p-3">
             <h1 className="text-md">Nested component</h1>
