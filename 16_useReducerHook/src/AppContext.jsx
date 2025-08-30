@@ -1,18 +1,21 @@
-import {createContext, useContext} from "react";
+import {createContext, useContext, useState} from "react";
 
 const MyAppContext = createContext({})
 
 export default function AppContext({children}) {
-    function getActionResultSwitch(actionType) {
+
+    const [count, setCount] = useState(0);
+
+    function getActionResult(actionType) {
         switch (actionType) {
             case 'increment':
-                console.log('Increment action executed (switch)')
+                setCount((prevCount) => prevCount + 1);
                 break
             case 'decrement':
-                console.log('Decrement action executed (switch)')
+                setCount((prevCount) => prevCount - 1);
                 break
             case 'reset':
-                console.log('Reset action executed (switch)')
+                setCount(0);
                 break
             default:
                 console.log('Unknown action type (switch)')
@@ -21,7 +24,8 @@ export default function AppContext({children}) {
 
     return(
         <MyAppContext.Provider value={{
-            getActionResultSwitch,
+            getActionResult,
+            count,
         }}>
             {children}
         </MyAppContext.Provider>
