@@ -1,24 +1,28 @@
 import {createContext, useContext} from "react";
 
-export const MyAppContext = createContext({})
-
-function getActionResultIf(actionType) {
-    if(actionType === 'increment') {
-        console.log('Increment action executed (if)')
-    } else if(actionType === 'decrement') {
-        console.log('Decrement action executed  (if)')
-    } else if(actionType === 'reset') {
-        console.log('Increment action executed  (if)')
-    } else {
-        console.log('Unknown action type (if)')
-    }
-}
-
-
+const MyAppContext = createContext({})
 
 export default function AppContext({children}) {
+    function getActionResultSwitch(actionType) {
+        switch (actionType) {
+            case 'increment':
+                console.log('Increment action executed (switch)')
+                break
+            case 'decrement':
+                console.log('Decrement action executed (switch)')
+                break
+            case 'reset':
+                console.log('Reset action executed (switch)')
+                break
+            default:
+                console.log('Unknown action type (switch)')
+        }
+    }
+
     return(
-        <MyAppContext.Provider value={{getActionResultIf}}>
+        <MyAppContext.Provider value={{
+            getActionResultSwitch,
+        }}>
             {children}
         </MyAppContext.Provider>
         )
