@@ -1,31 +1,28 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useContext, useReducer } from "react";
 
 const MyAppContext = createContext({})
 
 export default function AppContext({children}) {
 
-    const [count, setCount] = useState(0);
-
-    function getActionResult(actionType) {
-        switch (actionType) {
-            case 'increment':
-                setCount((prevCount) => prevCount + 1);
-                break
-            case 'decrement':
-                setCount((prevCount) => prevCount - 1);
-                break
-            case 'reset':
-                setCount(0);
-                break
+    function reducer(state, action) {
+        switch (action.type) {
+            case "increment":
+                return state + 1;
+            case "decrement":
+                return state - 1;
+            case "reset":
+                return state = 0;
             default:
-                console.log('Unknown action type (switch)')
+                return new Error("Invalid action type: " + action.type);
         }
     }
 
+    const [count, dispatch] = useReducer(reducer, 0)
+
     return(
         <MyAppContext.Provider value={{
-            getActionResult,
-            count,
+            dispatch,
+            count
         }}>
             {children}
         </MyAppContext.Provider>
