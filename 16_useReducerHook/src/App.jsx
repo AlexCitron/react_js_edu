@@ -4,13 +4,21 @@ import Button from "./Button.jsx";
 
 export default function App() {
 
-    const { count, dispatch } = useMyAppContext()
+    const { state, dispatch } = useMyAppContext()
+
+    function handleIncrementBy() {
+        const value = parseInt(state.inputValue, 10);
+        if(!isNaN(value)) {
+            dispatch({type: 'incrementBy', payload: value})
+        }
+        dispatch({type: 'updateInput', payload: ""})
+    }
 
   return (
     <main className="bg-gray-300 flex justify-center">
         <div className="m-10 p-2 bg-white rounded-lg flex flex-col">
             <p className="m-auto">Count: <span className={"font-semibold"}>
-                {count}
+                {state.count}
             </span></p>
             <div className="flex gap-2">
                 <Button
@@ -31,7 +39,24 @@ export default function App() {
                         dispatch({type: 'reset'})
                     }}
                 />
+                <Button
+                    className="bg-green-200 p-2 h-10" name={'+5'}
+                    onClick={() => {
+                        dispatch({type: 'incrementByFive', payload: 5})
+                    }}
+                />
             </div>
+            <div className="mt-5 flex flex-col gap-y-2">
+                <input placeholder="0"
+                       className="border-1 rounded-sm placeholder: p-1 placeholder: text-end"
+                       type="number"
+                       value={state.inputValue}
+                       onChange={(e) => dispatch({type: 'updateInput', payload: e.target.value})}
+                />
+                <Button className="bg-emerald-400 " name={'incrementBy'}
+                    onClick={handleIncrementBy} />
+            </div>
+
         </div>
     </main>
   )
