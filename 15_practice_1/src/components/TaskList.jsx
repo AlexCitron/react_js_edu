@@ -1,16 +1,12 @@
-import TaskItem from "./task.item.jsx";
+import TaskItem from "./TaskItem.jsx";
 import handleToggleComplete from "../handlers/handleToggleComplete.js";
 import handleDeleteTask from "../handlers/handleDeleteTask.js";
+import {useMyAppContext} from "../AppContext.jsx";
 
-export default function TaskList({time, tasks, setTasks}) {
+export default function TaskList({ tasks }) {
+    const {overdue, setTasks} = useMyAppContext();
 
-    function overdue(task) {
-        if(new Date(task.dueDate) < new Date(time)){
-            return 'overdue'
-        }
-        return ""
-    }
-    // console.log(document.documentElement)
+
     return (
         <div className='task-list'>
             <ul>

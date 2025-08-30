@@ -26,6 +26,7 @@ body {
 
 /* Main container for current tasks and completed tasks */
 .task-container,
+.add-task-container,
 .completed-task-container {
   position: relative;
   background-color: #ffffff;

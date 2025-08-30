@@ -1,11 +1,8 @@
-import {useState} from "react";
 import  handleSubmitForm from "../handlers/handleSubmitForm.js";
+import {useMyAppContext} from "../AppContext.jsx";
 
-export default function AddTaskForm({setTasks, tasks}) {
-
-    const [title, setTitle] = useState('')
-    const [priority, setPriority] = useState('Low')
-    const [dueDate, setDueDate] = useState('')
+export default function AddTasksForm() {
+    const {setTasks, tasks, title, setTitle, priority, setPriority, dueDate, setDueDate} = useMyAppContext()
 
     return (
         <form action="" className='task-form' onSubmit={(e) => handleSubmitForm(e, setTitle, setPriority, setDueDate, setTasks, tasks)}>

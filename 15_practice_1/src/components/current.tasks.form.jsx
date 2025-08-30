@@ -1,4 +1,4 @@
-import TaskList from "./task.list.jsx";
+import TaskList from "./TaskList.jsx";
 
 export default function CurrentTaskForm({tasks, setTasks}) {
     return (

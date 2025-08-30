@@ -5,9 +5,8 @@ export default function handleSortButtonClick(type, sortType, sortOrder, setTask
         setSortType(type)
         setSortOrder('asc')
     }
-    setTasks((prev) => [...prev.filter((task) => task.completed), ...sortTasks(tasks, sortType, sortOrder)])
+    setTasks(sortTasks(tasks, sortType, sortOrder))
 }
-
 
 function sortTasks(tasks, sortType, sortOrder) {
     return tasks.slice().sort((a, b) => {
