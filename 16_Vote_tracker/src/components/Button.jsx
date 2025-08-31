@@ -3,6 +3,5 @@ export default function Button ({name, className, onClick}) {
         className={className + "text-white rounded-sm"}
         onClick={() => console.log(`clicked ${name}`)}>
         {name}
-
     </button>
 }

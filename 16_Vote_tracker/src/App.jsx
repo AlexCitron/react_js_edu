@@ -1,5 +1,5 @@
 import "./index.css"
-import Button from "./Button.jsx";
+import Button from "./components/Button.jsx";
 
 export default function App() {
 
