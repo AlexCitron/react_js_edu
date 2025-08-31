@@ -5,7 +5,6 @@ const MyAppContext = createContext({})
 const initialState = {count: 0, inputValue: ""};
 
 function reducer(state, action) {
-    console.log(state.inputValue);
     switch (action.type) {
         case "increment":
             return {...state, count: state.count + 1};
