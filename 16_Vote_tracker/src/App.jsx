@@ -43,7 +43,7 @@ export default function App() {
                 type="text"
                 placeholder="Candidate name"/>
             <Button
-                className="bg-orange-400 py-1 px-2 mx-18 my-5 "
+                className="bg-orange-400 py-1 px-2 mx-2 "
                 name="Add"
             />
         </div>
