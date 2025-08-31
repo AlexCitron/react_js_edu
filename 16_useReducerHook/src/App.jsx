@@ -1,18 +1,11 @@
 import './index.css'
 import {useMyAppContext} from "./AppContext.jsx";
 import Button from "./Button.jsx";
+import {handleIncrementBy, handleUpdateInput} from "./handlers/handlers.js";
 
 export default function App() {
 
     const { state, dispatch } = useMyAppContext()
-
-    function handleIncrementBy() {
-        const value = parseInt(state.inputValue, 10);
-        if(!isNaN(value)) {
-            dispatch({type: 'incrementBy', payload: value})
-        }
-        dispatch({type: 'updateInput', payload: ""})
-    }
 
   return (
     <main className="bg-gray-300 flex justify-center">
@@ -51,10 +44,12 @@ export default function App() {
                        className="border-1 rounded-sm placeholder: p-1 placeholder: text-end"
                        type="number"
                        value={state.inputValue}
-                       onChange={(e) => dispatch({type: 'updateInput', payload: e.target.value})}
+                       onChange={(e) => handleUpdateInput({e, dispatch})}
                 />
                 <Button className="bg-emerald-400 " name={'incrementBy'}
-                    onClick={handleIncrementBy} />
+                    onClick={() => {
+                        handleIncrementBy(state, dispatch)
+                    }} />
             </div>
 
         </div>
