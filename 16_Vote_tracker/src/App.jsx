@@ -5,7 +5,7 @@ export default function App() {
 
   return (
     <main>
-        <h1 className="text-black text-center font-bold text-4xl">Vote Tracker</h1>
+        <h1 className="text-black text-center font-bold text-4xl mt-5">Vote Tracker</h1>
         <div className="
         mx-15 mt-5 p-5
         flex justify-between items-center
@@ -25,7 +25,8 @@ export default function App() {
             </div>
         </div>
         <Button
-            className="bg-orange-400 py-1 px-2 mx-18 my-5 "
+            className="bg-orange-400 hover:bg-orange-500 transition duration-300
+            py-1 px-2 mx-18 my-5 "
             name="Reset Votes"
         />
         <div className="
@@ -38,12 +39,13 @@ export default function App() {
                 className="
                 my-5 mx-2 w-95/100
                 border-1 border-gray-300 rounded-md
-                focus:outline-none
+                focus:outline-blue-500
                 px-3 py-1.5"
                 type="text"
                 placeholder="Candidate name"/>
             <Button
-                className="bg-orange-400 py-1 px-2 mx-2 "
+                className="bg-orange-400 hover:bg-orange-500 transition duration-300
+                py-1 px-2 mx-2 "
                 name="Add"
             />
         </div>
