@@ -1,14 +1,15 @@
-import {data} from "../../data/voters.jsx";
 import Button from "./Button.jsx";
+import {useMyAppContext} from "../AppContext.jsx";
 
 export default function VotersList() {
+    const { state, dispatch } = useMyAppContext()
     return (
         <ul className="mx-15 mt-5 px-5 py-5
         shadow-gray-300 rounded-lg
         shadow-md sm:rounded-md
         border-1 border-gray-50
         ">
-            {data.candidates.map(({id, name, votes}) => (
+            {state.candidates.map(({id, name, votes}) => (
                 <li className="flex justify-between items-center
                 mb-3
                 "
@@ -18,12 +19,14 @@ export default function VotersList() {
                             <Button
                                 className="bg-green-600 w-8 h-8
                                 hover:bg-green-500 transition duration-300 "
-                                name={'+'}/>
+                                name={'+'}
+                                onClick={() => dispatch({ type: "addVote", payload: {id, name, votes} })}/>
                             <Button />
                             <Button
                                 className="bg-red-600 w-8 h-8
                                 hover:bg-red-500 transition duration-300 "
-                                name={'-'}/>
+                                name={'-'}
+                                onClick={() => dispatch({ type: "removeVote", payload: {id, name, votes} })}/>
                             <Button />
                         </div>
                 </li>

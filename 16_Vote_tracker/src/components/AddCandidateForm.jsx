@@ -2,7 +2,7 @@ import Button from "./Button.jsx";
 import {useMyAppContext} from "../AppContext.jsx";
 
 export default function AddCandidateForm() {
-    const { state, dispatch } = useMyAppContext();
+    const {state, dispatch} = useMyAppContext();
 
     return (
         <div className="
@@ -19,9 +19,9 @@ export default function AddCandidateForm() {
                 px-3 py-1.5"
                 type="text"
                 placeholder="Candidate name"
+                value={state.inputValue}
                 onChange={(e) => {
                     dispatch({type: "inputUpdate", payload: e.target.value});
-                    console.log(state)
                 }}
             />
             <Button
@@ -29,8 +29,7 @@ export default function AddCandidateForm() {
                 py-1 px-2 mx-2 "
                 name="Add"
                 onClick={() => {
-                    dispatch({type: "addCandidate"});
-                    console.log(state)
+                    dispatch({type: "HandleAdd", payload: state.inputValue});
                 }}
             />
         </div>

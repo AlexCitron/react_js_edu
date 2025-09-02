@@ -1,5 +1,5 @@
 export const data = {
-    "candidates": [
+    candidates: [
         { id: 1, name: "Alice", votes: 0 },
         { id: 2, name: "Bob", votes: 0 },
         { id: 3, name: "Charlie", votes: 0 },
