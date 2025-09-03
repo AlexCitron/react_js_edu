@@ -1,5 +1,5 @@
 import Button from "./Button.jsx";
-import {useMyAppContext} from "../AppContext.jsx";
+import { useMyAppContext } from "../AppContext.jsx";
 
 export default function VotersList() {
     const { state, dispatch } = useMyAppContext()
@@ -10,9 +10,7 @@ export default function VotersList() {
         border-1 border-gray-50
         ">
             {state.candidates.map(({id, name, votes}) => (
-                <li className="flex justify-between items-center
-                mb-3
-                "
+                <li className="flex justify-between items-center mb-3 "
                     key={id}>
                         <p >{name}: {votes} votes</p>
                         <div className="flex gap-10">

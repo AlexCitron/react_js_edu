@@ -1,8 +1,7 @@
-import {createContext, useContext, useReducer} from "react";
-import { data } from "../data/voters.jsx"
+import {createContext, useContext, useEffect, useReducer, useState} from "react";
 
 const MyAppContext = createContext({})
-const InitialData = {...data, inputValue: ""}
+const InitialData = {candidates: [], inputValue: "", status: "loading"}
 
 function reducer(state, action) {
     switch (action.type) {
@@ -14,35 +13,44 @@ function reducer(state, action) {
                 name: action.payload,
                 votes: 0,
             }];
-        return {candidates: newCandidates, inputValue: "" };
+        return {...state, candidates: newCandidates, inputValue: "" };
         case "addVote":
-            const addVoteList =  []
-            for ( let {id, name, votes} of state.candidates) {
-                if(id === action.payload.id) {
-                    addVoteList.push({id, name, votes: votes + 1});
-                } else {
-                    addVoteList.push({id, name, votes});
+            const addVoteList = state.candidates.map((c) => {
+                if (c.id === action.payload.id) {
+                    return {...c, votes: c.votes + 1}
                 }
-            }
+                return c;})
             return {...state, candidates: addVoteList}
         case "removeVote":
-            const removeVoteList =  []
-            for ( let {id, name, votes} of state.candidates) {
-                if(id === action.payload.id) {
-                    removeVoteList.push({id, name, votes: votes ? votes - 1 : votes});
-                } else {
-                    removeVoteList.push({id, name, votes});
+            const removeVoteList =  state.candidates.map((c) => {
+                if (c.id === action.payload.id) {
+                    return {...c, votes: c.votes ? c.votes - 1 : c.votes}
                 }
-            }
+                return c;})
             return {...state, candidates: removeVoteList };
         case "resetVotes":
-            const resetList = state.candidates.map((p) => {return {...p, votes: 0}})
+            const resetList = state.candidates.map((c) => {return {...c, votes: 0}})
             return {...state, candidates: resetList};
+        case "dataReceived":
+            return {...state, candidates: action.payload, status: "ready"};
 }}
 
 export function AppContext({ children }) {
 
     const [state, dispatch] = useReducer(reducer, InitialData)
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("http://localhost:9000/candidates");
+            if(!response.ok) {
+                throw new Error("Failed to fetch data");
+            }
+            const data = await response.json();
+            dispatch({type:"dataReceived", payload: data})
+        }
+        fetchData()
+    }, [])
+
     return (
         <MyAppContext.Provider
             value={{
