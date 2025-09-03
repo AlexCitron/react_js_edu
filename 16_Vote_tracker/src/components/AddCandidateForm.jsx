@@ -29,7 +29,7 @@ export default function AddCandidateForm() {
                 py-1 px-2 mx-2 "
                 name="Add"
                 onClick={() => {
-                    dispatch({type: "HandleAdd", payload: state.inputValue});
+                    dispatch({type: "AddCandidate", payload: state.inputValue});
                 }}
             />
         </div>

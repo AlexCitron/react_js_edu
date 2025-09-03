@@ -18,13 +18,13 @@ export default function VotersList() {
                                 className="bg-green-600 w-8 h-8
                                 hover:bg-green-500 transition duration-300 "
                                 name={'+'}
-                                onClick={() => dispatch({ type: "addVote", payload: {id, name, votes} })}/>
+                                onClick={() => dispatch({ type: "addVote", payload: {id} })}/>
                             <Button />
                             <Button
                                 className="bg-red-600 w-8 h-8
                                 hover:bg-red-500 transition duration-300 "
                                 name={'-'}
-                                onClick={() => dispatch({ type: "removeVote", payload: {id, name, votes} })}/>
+                                onClick={() => dispatch({ type: "removeVote", payload: {id} })}/>
                             <Button />
                         </div>
                 </li>
