@@ -1,7 +1,7 @@
 import './index.css'
-import AddUserForm from "./components/AddUserForm.jsx";
-import SelectUserDetails from "./components/SelectdUserDetails.jsx";
-import UsersList from "./components/UsersList.jsx";
+import AddUserForm from "./features/userList/AddUserForm.jsx";
+import SelectUserDetails from "./features/userDetails/SelectdUserDetails.jsx";
+import UsersList from "./features/userList/UsersList.jsx";
 
 export default function App() {
 
