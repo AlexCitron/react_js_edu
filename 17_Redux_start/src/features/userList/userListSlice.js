@@ -17,7 +17,7 @@ export default  function userListReducer(state = initialState, action) {
             };
         }
         case "userList/deleteUser": {
-            return {...state, users: [...state.users.filter((u) => u.id !== action.payload)]};
+            return {...state, users: [...state.users.filter(({id}) => id !== action.payload)]};
         }
         default: return state;
     }
@@ -25,4 +25,8 @@ export default  function userListReducer(state = initialState, action) {
 
 export function addUser (user) {
     return { type: "userList/addUser", payload: user };
+}
+
+export function deleteUser (id) {
+    return { type: "userList/deleteUser", payload: id };
 }
