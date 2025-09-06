@@ -1,7 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {deleteUser} from "./userListSlice.js";
+import {deleteUser, fetchData} from "./userListSlice.js";
 import OperationButton from "./userListOperationButtons.jsx";
-import LoadUsersButton from "./LoadUsersButton.jsx";
 
 export default function UsersList() {
 
@@ -15,13 +14,21 @@ export default function UsersList() {
         dispatch(deleteUser(id))
     }
 
+    function handleLoadUsers() {
+        dispatch(fetchData());
+    }
+
     return (
         <div className="my-5 w-full bg-white shadow rounded-md p-3 space-y-2">
             <h2 className="text-xl my-1 font-bold">User List</h2>
-            <LoadUsersButton onClick={() => console.log("Click")} />
+            <button
+                className="bg-green-500 rounded-md text-white mt-2 py-2 px-3 hover:bg-green-600
+                transition duration-500"
+                onClick={handleLoadUsers}
+            >Load Users</button>
 
             {loading && <p>Loading...</p>}
-            {error && <p>Error: {error.message}</p>}
+            {error && <p><strong>Error:</strong> {error}</p>}
 
             <ul className='mt-2 space-y-2'>
                 {users.map(({id, name, email}) => (

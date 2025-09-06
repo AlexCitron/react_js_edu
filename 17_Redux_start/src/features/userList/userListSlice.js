@@ -6,6 +6,25 @@ const initialState = {
 
 export default  function userListReducer(state = initialState, action) {
     switch (action.type) {
+        case "userList/fetchData":
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            }
+        case "userList/fetchSuccess":
+            return {
+                ...state,
+                loading: false,
+                users: action.payload,
+            }
+        case "userList/fetchError":
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            }
+
         case "userList/addUser": {
             return {...state, users: [...state.users,
                     {
@@ -16,10 +35,28 @@ export default  function userListReducer(state = initialState, action) {
                     ]
             };
         }
+
         case "userList/deleteUser": {
             return {...state, users: [...state.users.filter(({id}) => id !== action.payload)]};
         }
+
         default: return state;
+    }
+}
+
+export function fetchData () {
+    return async function (dispatch, getState) {
+        dispatch({type:'userList/fetchData'});
+        try {
+            const response = await fetch("https://jsonplaceholder.typicode.com/userss")
+            if(!response.ok) {
+                throw new Error("Could not fetch data");
+            }
+            const data = await response.json();
+            dispatch({type:'userList/fetchSuccess', payload: data});
+        } catch (e) {
+            dispatch({type:'userList/fetchError', payload: e.message});
+        }
     }
 }
 
