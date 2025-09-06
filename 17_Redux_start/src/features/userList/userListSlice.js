@@ -45,10 +45,10 @@ export default  function userListReducer(state = initialState, action) {
 }
 
 export function fetchData () {
-    return async function (dispatch, getState) {
+    return async function (dispatch) {
         dispatch({type:'userList/fetchData'});
         try {
-            const response = await fetch("https://jsonplaceholder.typicode.com/userss")
+            const response = await fetch("https://jsonplaceholder.typicode.com/users")
             if(!response.ok) {
                 throw new Error("Could not fetch data");
             }

@@ -1,8 +1,8 @@
 import {applyMiddleware, createStore} from "redux"
-import userListReducer from "./features/userList/userListSlice.js";
 import {thunk} from "redux-thunk";
+import rootReducer from "./rootReducer.js";
 
-const store = createStore(userListReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 // console.log(store.getState())
 

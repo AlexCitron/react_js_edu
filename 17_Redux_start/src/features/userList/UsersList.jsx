@@ -1,12 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {deleteUser, fetchData} from "./userListSlice.js";
 import OperationButton from "./userListOperationButtons.jsx";
+import {selectedUser} from "../userDetails/userDetailSlice.js";
 
 export default function UsersList() {
 
-    const users = useSelector(({ users }) => users);
-    const loading = useSelector(({ loading }) => loading);
-    const error = useSelector(({ error }) => error);
+    const users = useSelector(({userList}) => userList.users);
+    const loading = useSelector(({userList}) => userList.loading);
+    const error = useSelector(({userList}) => userList.error);
 
     const dispatch = useDispatch();
 
@@ -16,6 +17,10 @@ export default function UsersList() {
 
     function handleLoadUsers() {
         dispatch(fetchData());
+    }
+
+    function handleSelectUser(id) {
+        dispatch(selectedUser({id}))
     }
 
     return (
@@ -31,11 +36,11 @@ export default function UsersList() {
             {error && <p><strong>Error:</strong> {error}</p>}
 
             <ul className='mt-2 space-y-2'>
-                {users.map(({id, name, email}) => (
+                {users.map(({id, name, email, ...rest}) => (
                     <li key={id} className="flex justify-between">
                         <p>{name}: {email}</p>
                         <div className="flex gap-2">
-                            <OperationButton color="blue" onClick={() => console.log('Click')}>Select</OperationButton>
+                            <OperationButton color="blue" onClick={() => handleSelectUser(id)}>Select</OperationButton>
                             <OperationButton color="red" onClick={() => handleDelete(id)}>Delete</OperationButton>
                         </div>
                     </li>
