@@ -1,6 +1,7 @@
 import Input from "./Input.jsx";
 import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {addUser} from "./userListSlice.js";
 
 
 export default function AddUserForm( ) {
@@ -8,6 +9,16 @@ export default function AddUserForm( ) {
     const [email, setEmail] = useState("");
 
     const dispatch = useDispatch();
+
+    function handleSubmit (e) {
+        e.preventDefault();
+
+        const newUser = {name, email};
+
+        dispatch(addUser(newUser));
+        setName("")
+        setEmail("")
+    }
 
     return (
         <div className="mt-10 flex gap-3 ">
@@ -17,15 +28,7 @@ export default function AddUserForm( ) {
                 type="submit"
                 className="bg-green-500 rounded-md px-auto text-white py-3 px-2 w-50 hover:bg-green-600
                 transition duration-500"
-                onClick={(e) => {
-                    e.preventDefault();
-                    dispatch({
-                        type: "userList/addUser",
-                        payload: {name, email}
-                    })
-                    setName("");
-                    setEmail("");
-                }}>
+                onClick={handleSubmit}>
             Add user</button>
         </div>
     )
