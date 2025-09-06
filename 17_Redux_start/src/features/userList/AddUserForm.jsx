@@ -1,21 +1,24 @@
 import Input from "./Input.jsx";
 import {useState} from "react";
 import AddUserButton from "./AddUserButton.jsx";
+import {useDispatch} from "react-redux";
+import {addUser} from "./userSliceList.js";
 
 
 export default function AddUserForm( ) {
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
+    const dispatch = useDispatch();
 
     function handleSubmit (e) {
         e.preventDefault();
 
-        const newUser = {name, email};
         if (!name || !email) {
             return
         }
-        console.log("Click");
+        dispatch(addUser({name, email}));
         setName("")
         setEmail("")
     }

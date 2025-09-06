@@ -1,18 +1,26 @@
 import OperationButton from "./userListOperationButtons.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchUsers, removeUser} from "./userSliceList.js";
+import {selectUser} from "../userDetails/userSliceDetails.js";
 
 export default function UsersList() {
 
+    const users = useSelector(state => state.userList.users);
+    const loading = useSelector(state => state.userList.loading);
+    const error = useSelector(state => state.userList.error);
 
-    function handleDelete(id) {
-        console.log("Click");
-    }
+    const dispatch = useDispatch();
 
     function handleLoadUsers() {
-        console.log("Click");
+        dispatch(fetchUsers());
+    }
+
+    function handleDelete(id) {
+        dispatch(removeUser(id));
     }
 
     function handleSelectUser(id) {
-        console.log("Click");
+        dispatch(selectUser(id));
     }
 
     return (
@@ -24,19 +32,19 @@ export default function UsersList() {
                 onClick={handleLoadUsers}
             >Load Users</button>
 
-            {/*{loading && <p>Loading...</p>}*/}
-            {/*{error && <p><strong>Error:</strong> {error}</p>}*/}
+            {loading && <p>Loading...</p>}
+            {error && <p><strong>Error:</strong> {error}</p>}
 
             <ul className='mt-2 space-y-2'>
-                {/*{users.map(({id, name, email}) => (*/}
-                {/*    <li key={id} className="flex justify-between">*/}
-                {/*        <p>{name}: {email}</p>*/}
-                {/*        <div className="flex gap-2">*/}
-                {/*            <OperationButton color="blue" onClick={() => handleSelectUser(id)}>Select</OperationButton>*/}
-                {/*            <OperationButton color="red" onClick={() => handleDelete(id)}>Delete</OperationButton>*/}
-                {/*        </div>*/}
-                {/*    </li>*/}
-                {/*))}*/}
+                {users.map(({id, name, email}) => (
+                    <li key={id} className="flex justify-between">
+                        <p>{name}: {email}</p>
+                        <div className="flex gap-2">
+                            <OperationButton color="blue" onClick={() => handleSelectUser(id)}>Select</OperationButton>
+                            <OperationButton color="red" onClick={() => handleDelete(id)}>Delete</OperationButton>
+                        </div>
+                    </li>
+                ))}
             </ul>
         </div>
     )
