@@ -36,7 +36,7 @@ export default function UsersList() {
             {error && <p><strong>Error:</strong> {error}</p>}
 
             <ul className='mt-2 space-y-2'>
-                {users.map(({id, name, email}) => (
+                {users?.map(({id, name, email}) => (
                     <li key={id} className="flex justify-between">
                         <p>{name}: {email}</p>
                         <div className="flex gap-2">
