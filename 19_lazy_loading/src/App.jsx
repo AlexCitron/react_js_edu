@@ -1,15 +1,18 @@
 import "./index.css"
+import { lazy } from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import Cart from "./pages/Cart.jsx";
-import Category from "./pages/Category.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import ProductDetails from "./pages/ProductDetails.jsx";
-import Layout from "./components/Layout.jsx";
-import Thanks from "./pages/Thanks.jsx";
+
 import FetchData from "./utils/FetchData.js";
+import Layout from "./components/Layout.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Category = lazy(() => import("./pages/Category"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const Thanks = lazy(() => import("./pages/Thanks"));
 
 /*Setting routes*/
 const router = createBrowserRouter([{
